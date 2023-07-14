@@ -6,10 +6,10 @@ This repository contains the implementation of a Quantum Hamiltonian Learning pr
 
 The Hamiltonian learning problem involves inferring the coefficients of a Hamiltonian on an $n$-qubit system. The Hamiltonian is expressed as a sum of Pauli operators with corresponding coefficients. The goal is to determine the unknown coefficients with a certain level of accuracy, given knowledge of the Hamiltonian structure.
 
-Consider a Hamiltonian $H$ with the following expansion in the Pauli basis:
-$$
+Consider a Hamiltonian $H$ with the following expansion in the Pauli basis: 
+```math
 H = \sum_{m=1}^r \theta_m P_m.
-$$
+```
 Here, each $P_m$ is a Pauli operator from the set $\{I,\sigma_x,\sigma_y,\sigma_z\}$ acting on $n$ qubits. The coefficients $\theta_m$ represent the unknown Hamiltonian coefficients. We assume that the Hamiltonian structure (i.e., which Paulis $P_m$ are present) is known, but the coefficients are unknown.
 
 ### Data Access
@@ -38,10 +38,10 @@ The support of a Pauli operator $P$ refers to the set of qubits on which the ope
 
 ### Degree of the Hamiltonian
 
-The degree $\mathcal{D}$ of the Hamiltonian represents the maximum degree of any vertex in the interaction graph:
-$$
-\mathcal{D} = \max_v \text{deg}(v)
-$$
+The degree $\mathcal{D}$ of the Hamiltonian represents the maximum degree of any vertex in the interaction graph: 
+```math
+\mathcal{D} = \max_v \text{deg}(v).
+```
 
 A sparsely interacting Hamiltonian is characterized by having a degree $\mathcal{D}$ that is independent of the system size $n$. This class of Hamiltonians includes geometrically $k$-local Hamiltonians, where the number of terms overlapping with any Pauli term depends only on $k$.
 

@@ -1,0 +1,47 @@
+\documentclass[crop,tikz]{standalone}% 'crop' is the default for v1.0, before it was 'preview'
+\usepackage{physics}
+\usetikzlibrary{positioning,shapes.geometric,decorations.pathreplacing,arrows.meta}
+\begin{document}
+\tikzset{meter/.append style={draw, inner sep=10, rectangle, font=\vphantom{A}, minimum width=30, line width=.8,
+ path picture={\draw[black] ([shift={(.1,.3)}]path picture bounding box.south west) to[bend left=50] ([shift={(-.1,.3)}]path picture bounding box.south east);\draw[black,-latex] ([shift={(0,.1)}]path picture bounding box.south) -- ([shift={(.3,-.1)}]path picture bounding box.north);}}}
+
+\begin{tikzpicture}[node distance={30mm}, thick, main/.style = {draw, rectangle, minimum size=1cm}
+    ] 
+\node[main] (0) {$P$}; 
+\node[main] (1) [below left=9mm and 35mm of 0] {$P_1$};
+\node[main] (2) [below=9mm of 0] {$P_{10}$}; 
+\node[main] (3) [below right=9mm and 43mm of 0] {$P_{2}$}; 
+
+\node[main] (5) [below left=9mm and 8mm of 1] {$P_1$}; 
+\node[main] (6) [below left=9mm and -4mm of 1] {$P_2$}; 
+\node[main] (7) [below right=9mm and -4mm of 1] {$P_{9}$}; 
+\node[main] (8) [below right=9mm and 8mm of 1] {$P_{10}$}; 
+
+\node[main] (9) [below left=9mm and -3mm of 2] {$P_1$}; 
+\node[main] (10) [below right=9mm and -3mm of 2] {$P_{10}$};
+
+\node[main] (12) [below left=9mm and 17mm of 3] {$P_1$}; 
+\node[main] (13) [below left=9mm and 3mm of 3] {$P_{2}$}; 
+\node[main] (14) [below=9mm of 3] {$P_3$}; 
+\node[main] (15) [below right=9mm and 3mm of 3] {$P_{10}$}; 
+\node[main] (16) [below right=9mm and 17mm of 3] {$P_{11}$}; 
+
+\draw[-] (0) -- (1);
+\draw[-] (0) -- (2);
+\draw[-] (0) -- (3);
+\draw[-] (1) -- (5);
+\draw[-] (1) -- (6);
+\draw[-] (1) -- (7);
+\draw[-] (1) -- (8);
+\draw[-] (2) -- (9);
+\draw[-] (2) -- (10);
+\draw[-] (3) to [in=45, out=215,looseness=0] (12);
+\draw[-] (3) -- (13);
+\draw[-] (3) -- (14);
+\draw[-] (3) -- (15);
+\draw[-] (3) to [in=135, out=330,looseness=0] (16);
+\node (17) [below=24mm of 1] {$\ldots$};
+\node (18) [below=24mm of 2] {$\ldots$};
+\node (19) [below=24mm of 3] {$\ldots$};
+\end{tikzpicture} 
+\end{document}

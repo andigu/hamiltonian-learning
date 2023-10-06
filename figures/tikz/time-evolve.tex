@@ -1,0 +1,30 @@
+\documentclass[crop,tikz]{standalone}% 'crop' is the default for v1.0, before it was 'preview'
+\usetikzlibrary{positioning,shapes.geometric,decorations.pathreplacing,arrows.meta}
+\begin{document}
+\tikzset{meter/.append style={draw, inner sep=10, rectangle, font=\vphantom{A}, minimum width=30, line width=.8,
+ path picture={\draw[black] ([shift={(.1,.3)}]path picture bounding box.south west) to[bend left=50] ([shift={(-.1,.3)}]path picture bounding box.south east);\draw[black,-latex] ([shift={(0,.1)}]path picture bounding box.south) -- ([shift={(.3,-.1)}]path picture bounding box.north);}}}
+
+\begin{tikzpicture}
+    \node (time) [rectangle, minimum width=2.2cm, minimum height=1.2cm,text centered, draw=black] {$e^{-iH t}$};
+    \draw[-] (time.165) --++(0:-0.5cm) node[above,yshift=0.1cm] (top) {};
+    \draw[-] (time.173) --++(0:-0.5cm);
+    \draw[-] (time.west) --++(0:-0.5cm);
+    \draw[-] (time.187) --++(0:-0.5cm);
+    \draw[-] (time.195) --++(0:-0.5cm) node[below,yshift=-0.1cm] (bot) {};
+    
+    \draw[-] (time.15) --++(0:0.5cm);
+    \draw[-] (time.7) --++(0:0.5cm);
+    \draw[-] (time.353) --++(0:0.5cm);
+    \draw[-] (time.345) --++ (0:0.5cm);
+    
+    \draw[dashed, thick] (-2.7,-1.45) rectangle (3,1.2);
+    \draw[-] (time.0) --++(0:0.5cm) node[right, meter] (met) {};
+    \draw[double,-{Implies},double distance=0.3mm] (met.south) --++ (270:0.55cm) -- ++(180:2.2cm) --++ (270:0.8cm) node (out) {};
+    \draw[double,{Implies}-,double distance=0.3mm] (time.north) --++(90:0.9cm) node[above] {$t$};
+    \node[yshift=-0.4cm] at (out) {$f(t)$};
+    \node[yshift=0.8cm] at (met) {$P$};
+
+    
+    \draw [decorate, decoration = {brace, raise=5pt},thick] (bot) --  (top) node[pos=0.5,left=10pt]{$\rho_0$};
+    \end{tikzpicture}
+\end{document}
